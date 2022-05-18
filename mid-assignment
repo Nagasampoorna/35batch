@@ -1,8 +1,39 @@
-ASSIGNMENT 1
-<copy paste your practicals>
-<your observation>
+ASSIGNMENT 1:
+What are the differences file-wise?
+apiVersion: v1
+kind: ReplicationController
 
+apiVersion: apps/v1
+kind: ReplicaSet
+spec:
+    matchLabels:
+
+Identify what commands can be run after "kubectl apply -f kubia-replicaset.yaml"
+Make a service over these pods (kubia-replicaset) and see if the service picks up the web-service within the pod ("You have hit....." message)
+Ans: You've hit kubia-tgdw8.
+Negative Testing : change the labels of the pod and see if the service is still applied on those pods
+Ans: You've hit kubia-tgdw8 
 
 ASSIGNMENT 2
-<>
+go to cronjob.yaml (/root/kubernetes-training/04-controllers)
+[root@ip-172-31-29-185 04-controllers]# kubectl apply -f cronjob.yaml
+cronjob.batch/batch-job-every-fifteen-minutes created
+
+Find out what is the command to "get" the running jobs.
+crontab -l
+
+Observe and if possible, paste the results from your practicals.
+[root@ip-172-31-29-185 04-controllers]# crontab -l
+no crontab for root
+
+Also identify how you would "permanently arrest" the jobs from running.
+service crond stop
+
+What is the change from normal Jobs (jobs v/s cronJobs) - Your observation in one sentence.
+Jobs use completion and parallelism parameters to control the patterns. 
+Job pods can run as a single task, several sequential tasks.
+the first task that finishes instructs the rest of the to complete.
+CronJobs are useful for creating periodic and recurring tasks, like running backups or sending emails.
+CronJobs can also schedule individual tasks for a specific time, such as scheduling a Job for when your cluster is likely to be idle.
+
 <>
